@@ -1,3 +1,6 @@
+/*
+    跑路啦 跑路啦 有缘再见！
+        
 import plugin from '../../../lib/plugins/plugin.js';
 export class Pictures extends plugin {
 
@@ -220,3 +223,5 @@ export class Pictures extends plugin {
     return true
     }
 }
+
+*/
