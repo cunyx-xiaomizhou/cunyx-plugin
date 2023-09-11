@@ -30,7 +30,7 @@ let Theme = {
       ret = ['default'];
     }
     
-    let name_ = lodash.sample(ret);
+    let name = lodash.sample(ret);
     let resPath = '{{_res_path}}/help/theme/';
 
     let mainImagePath = '';
@@ -43,8 +43,8 @@ let Theme = {
     }
     return {
       main: mainImagePath,
-      bg: fs.existsSync(`${dirPath}${name_}/bg.jpg`)
-        ? `${resPath}${name_}/bg.jpg`
+      bg: fs.existsSync(`${dirPath}${name}/bg.jpg`)
+        ? `${resPath}${name}/bg.jpg`
         : `${resPath}default/bg.jpg`,
       style: (await Data.importModule(`resources/help/theme/${name}/config.js`)).style || {},
     };
