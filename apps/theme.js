@@ -1,6 +1,6 @@
 import lodash from 'lodash'
 import fs from 'fs'
-import { Data } from '../../components/index.js'
+import { Data } from '../components/index.js'
 
 
 let Theme = {
