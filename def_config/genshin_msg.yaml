@@ -1,0 +1,8 @@
+#api接口，请填入完整链接
+#不支持喵喵api
+#作者亲测以下链接，想用哪个直接取消注释，把原来的加上注释
+#取消/添加注释是删除/添加#号就是注释
+
+#api: 'http://enka.network/api/uid/'
+api: 'http://profile.microgg.cn/api/uid/'
+#请不要输入其他特殊符号，空格也不行！

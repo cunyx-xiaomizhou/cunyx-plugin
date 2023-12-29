@@ -1,0 +1,6 @@
+#功能开关，true为开，false为关
+cond: true
+#是否为只有主人能用
+Master: false
+#key值，将会影响解密加密结果，必须是整数，可以为负
+key: 40
