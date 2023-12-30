@@ -38,7 +38,6 @@ export const helpList = [
   },
   {
     group: '寸幼萱管理设置',
-    auth: 'master',
     list: [
       {
         icon: 2,
