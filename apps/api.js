@@ -3,7 +3,11 @@ import fetch from 'node-fetch';
 import { segment } from 'icqq';
 import YamlReader from '../components/YamlReader.js';
 let data = new YamlReader('./plugins/cunyx-plugin/config/cunyx_api.yaml').jsonData
-const baseUrl = "https://api.cunyx.cn/api/api/"
+if (data.domain) {
+    const baseUrl = "https://" + data.domain + "/api/api/"
+} else {
+    const baseUrl = "https://api.cunyx.cn/api/api/"
+}
 const urlMap = (type, data) => {
     const Url = {
         //pixiv图片
