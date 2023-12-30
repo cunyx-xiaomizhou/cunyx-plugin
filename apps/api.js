@@ -1,16 +1,10 @@
 import plugin from './../../../lib/plugins/plugin.js';
 import fetch from 'node-fetch';
 import { segment } from 'icqq';
-import YAML from 'yaml';
-import fs from 'fs';
 import YamlReader from '../components/YamlReader.js';
 let data = new YamlReader('./plugins/cunyx-plugin/config/cunyx_api.yaml').jsonData
-let JsonData = YAML.parse(fs.readFileSync('./plugins/cunyx-plugin/config/cunyx_api.yaml','utf-8'));
-if (JsonData.domain) {
-    const baseUrl = "https://" + JsonData.domain + "/api/api/"
-} else {
-    const baseUrl = "https://api.cunyx.cn/api/api/"
-}
+const baseUrl = "https://api.cunyx.cn/api/api/"
+
 const urlMap = (type, data) => {
     const Url = {
         //pixiv图片
