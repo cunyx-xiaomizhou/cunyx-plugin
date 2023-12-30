@@ -3,8 +3,9 @@ import fetch from 'node-fetch';
 import { segment } from 'icqq';
 import YamlReader from '../components/YamlReader.js';
 let data = new YamlReader('./plugins/cunyx-plugin/config/cunyx_api.yaml').jsonData
-if (data.domain) {
-    const baseUrl = "https://" + data.domain + "/api/api/"
+let JsonData = YAML.parse(fs.readFileSync('./plugins/cunyx-plugin/config/cunyx_api.yaml','utf-8'));
+if (JsonData.domain) {
+    const baseUrl = "https://" + JsonData.domain + "/api/api/"
 } else {
     const baseUrl = "https://api.cunyx.cn/api/api/"
 }
