@@ -4,7 +4,7 @@ import YAML from 'yaml';
 import fs from 'fs';
 
 let data = YAML.parse(fs.readFileSync('./plugins/cunyx-plugin/config/cunyx_api.yaml','utf-8'));
-
+let json;
 export class cunyx_cdkey extends plugin {
   constructor () {
     super({
@@ -23,7 +23,11 @@ export class cunyx_cdkey extends plugin {
       return true;
     }
     let cdkey = e.msg.replace(/(寸幼萱|(c|C)(u|U)?(n|N)?(y|Y)(x|X))兑换(码)?|#/g, '').trim();
-    let json = await fetch(`http://api.cunyx.cn/Yunzai-Bot/cdkey.php?qq=${data.qq}&token=${data.api}&cdkey=${cdkey}`);
+    try {
+        json = await fetch(`http://${data.domain}/mine/cdkey?qq=${data.qq}&token=${data.api}&cdkey=${cdkey}`);
+    } catch (err) {
+        json = await fetch(`http://api.cunyx.cn/mine/cdkey?qq=${data.qq}*$token=${data.api}&$cdkey=${cdkey}`);
+    }
     json = await json.json();
     var text = json;
     e.reply(text.msg);
