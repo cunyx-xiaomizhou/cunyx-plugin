@@ -30,8 +30,13 @@ export class cunyx_api extends plugin {
     } catch (err) {
         json = await fetch(`http://api.cunyx.cn/mine/token?qq=${data.qq}&token=${data.api}`);
     }
-    json = await json.json();
-    var Json = json;
+    try {
+      json = await json.json();
+      var Json = json;
+      Json = Json
+    } catch (err) {
+        e.reply(json);
+    }
     if (e.isMaster || e.user_id=='2996849867') {
       if (Json.code==200) {
           if (Json.data.condition==0) {
