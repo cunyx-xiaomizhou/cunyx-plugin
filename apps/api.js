@@ -72,12 +72,6 @@ const urlMap = (type, data) => {
             url: `cos`,//基础url后面的不同url
             type: 'image',//返回的数据类型
         },
-        //超污情话
-        'wuwu': {
-            reg: '^超污情话$',
-            url: `wuwu`,//基础url后面的不同url
-            type: 'text',//返回的数据类型
-        },
         //淘宝买家秀
         'buyer_show': {
             reg: '^买家秀$',
@@ -125,8 +119,13 @@ export class Api extends plugin {
         if (Url[type].replaceText) {
             param = e.msg.replace(Url[type].replaceText, "")
         }
-        let url = urlMap(type)
-        let rsp = await fetch(`${baseUrl}${url.url}${param ? param + "&" : "?"}qq=${data.qq}&token=${data.api}`);
+        let url = urlMap(type);
+        let rsp;
+        try {
+            rsp = await fetch(`https://${data.domain}/api/api/${url.url}${param ? param + "&" : "?"}qq=${data.qq}&token=${data.api}`);
+        } catch (err) {
+            rsp = await fetch(`${baseUrl}${url.url}${param ? param + "&" : "?"}qq=${data.qq}&token=${data.api}`);
+        }
         let json = await rsp.json();
         if (json.code != 200) {
             return e.reply(json.msg);
