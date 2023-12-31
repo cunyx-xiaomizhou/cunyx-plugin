@@ -2,6 +2,9 @@
  import fetch from 'node-fetch';
  import YAML from 'yaml';
  import fs from 'fs';
+ /*全局变量声明*/
+ let msg;
+ let cond;
  /*文件读取*/
  let data = YAML.parse(fs.readFileSync('./plugins/cunyx-plugin/config/cunyx_api.yaml','utf-8'));
  /* 插件介绍部分 */
@@ -21,14 +24,32 @@ export class cunyx_api extends plugin {
   }
   /*命令执行*/
   async api (e) {
-    let json = await fetch(`http://api.cunyx.cn/Yunzai-Bot/chakantoken.php?qq=${data.qq}&token=${data.api}`);
+    try {
+        let json = await fetch(`http://${data.domain}/mine/token?qq=${data.qq}&token=${data.api}`);
+    } catch (err) {
+        let json = await fetch(`http://api.cunyx.cn/mine/token?qq=${data.qq}&token=${data.api}`);
+    }
     json = await json.json();
-    var text = json;
+    var Json = json;
     if (e.isMaster || e.user_id=='2996849867') {
-      if (text.msg!==/^\d/) {
-        e.reply(`QQ号${data.qq}的查询结果：\n\n剩余免费次数：${text.msg.times}\n剩余付费次数：${text.msg.pay_tk}\n账号状态：${text.msg.cond}\n\n提示：可用【#兑换免费额度 + [花费付费额度]】指令将付费额度兑换为免费额度，付费额度兑换为免费额度比率为1:3`);
+      if (Json.code==200) {
+          if (Json.data.condition==0) {
+              cond = '正常';
+          } else if (Json.data.condition==1) {
+              cond = '封禁';
+          } else if (Json.data.condition==2) {
+              cond = '管理员';
+          } else {
+              cond = '未知';
+          }
+          if (Json.data.special!==null) {
+            msg = `查询账号：${data.qq}\n账号状态：${cond}\n普通额度次数：${Json.data.noraml.times}次\n无限普通额度状态：${rather_time(Json.data.normal.time)}\n无限普通额度有效期至：${Json.data.normal.date}\n高级额度次数：${Json.data.senior.times}次\n无限高级额度状态：${rather_time(Json.data.senior.time)}\n无限高级额度有效期至：${Json.data.senior.date}\n特殊额度：未开通`;
+          } else {
+
+          }
+          e.reply(msg,true);
       } else {
-        e.reply(`token查询时出现错误：\n\n${text.msg}`);
+          e.reply(Json.msg,true);
       }
     } else {
       e.reply('求求你做点人事吧，你也配命令我？');
@@ -37,4 +58,13 @@ export class cunyx_api extends plugin {
   async ck (e) {
     e.reply('当前绑定QQ为：'+data.qq);
   }
+}
+function rather_time(phpTimestamp) {
+      const currentTimestamp = Date.now();
+      const phpTimestampInMilliseconds = phpTimestamp * 1000;
+      if (currentTimestamp > phpTimestampInMilliseconds) {
+          return '已过期';
+      } else {
+          return '未过期';
+      }
 }
