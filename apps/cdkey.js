@@ -26,7 +26,7 @@ export class cunyx_cdkey extends plugin {
     try {
         json = await fetch(`http://${data.domain}/mine/cdkey?qq=${data.qq}&token=${data.api}&cdkey=${cdkey}`);
     } catch (err) {
-        json = await fetch(`http://api.cunyx.cn/mine/cdkey?qq=${data.qq}*$token=${data.api}&$cdkey=${cdkey}`);
+        json = await fetch(`http://api.cunyx.cn/mine/cdkey?qq=${data.qq}&token=${data.api}&cdkey=${cdkey}`);
     }
     json = await json.json();
     var text = json;
