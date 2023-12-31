@@ -5,6 +5,7 @@
  /*全局变量声明*/
  let msg;
  let cond;
+ let json;
  /*文件读取*/
  let data = YAML.parse(fs.readFileSync('./plugins/cunyx-plugin/config/cunyx_api.yaml','utf-8'));
  /* 插件介绍部分 */
@@ -25,9 +26,9 @@ export class cunyx_api extends plugin {
   /*命令执行*/
   async api (e) {
     try {
-        let json = await fetch(`http://${data.domain}/mine/token?qq=${data.qq}&token=${data.api}`);
+        json = await fetch(`http://${data.domain}/mine/token?qq=${data.qq}&token=${data.api}`);
     } catch (err) {
-        let json = await fetch(`http://api.cunyx.cn/mine/token?qq=${data.qq}&token=${data.api}`);
+        json = await fetch(`http://api.cunyx.cn/mine/token?qq=${data.qq}&token=${data.api}`);
     }
     json = await json.json();
     var Json = json;
