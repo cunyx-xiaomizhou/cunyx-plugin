@@ -86,9 +86,10 @@ const urlMap = (type, data) => {
         },
         //发癫
         'attack': {
-            reg: '^发癫$',
-            url: `attack`,//基础url后面的不同url
+            reg: '^发癫',
+            url: `attack?name=`,//基础url后面的不同url
             type: 'text',//返回的数据类型
+            replaceText: '发癫'
         },
 
     }
