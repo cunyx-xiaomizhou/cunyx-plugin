@@ -31,18 +31,60 @@ export const helpList = [
     list: [
       {
         icon: 1,
-        title: '寸幼萱api',
-        desc: '查看token剩余可用次数'
+        title: '随机cos图',
+        desc: '来一张三次元动漫图片'
+      },
+      {
+        icon: 4,
+        title: '答案之书',
+        desc: '我想的问题可以实现吗？'
+      },
+      {
+        icon: 6,
+        title: '原神壁纸',
+        desc: '来一张帅气的原神壁纸吧'
+      },
+      {
+        icon: 9,
+        title: '随机美图',
+        desc:'劳累了一天，还是歇一歇眼睛吧'
+      }
+    ]
+  },
+  {
+    group: '加强版功能(一般人我都不告诉TA)',
+    auth: 'master',
+    list: [
+      {
+        icon: 7,
+        title: 'p站',
+        desc: '来一张p站的涩图'
+      },
+      {
+        icon: 8,
+        title: 'p站r18',
+        desc: '来一张p站的涩图(漏点,慎重使用)'
       }
     ]
   },
   {
     group: '寸幼萱管理设置',
+    auth: 'master',
     list: [
       {
         icon: 2,
-        title: '#测试',
-        desc: '。。。。'
+        title: '#寸幼萱API',
+        desc: '查看API剩余次数'
+      },
+      {
+        icon: 3,
+        title: '#寸幼萱兑换码',
+        desc: '为你的token使用兑换码增加额度'
+      },
+      {
+        icon: 5,
+        title: '#寸幼萱(强制)更新',
+        desc: '更新本插件，使用更多功能'
       }
     ]
   }
