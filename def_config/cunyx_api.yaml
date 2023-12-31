@@ -4,3 +4,5 @@ qq: 1330274315
 #token的输入请不要带上任何的空格和特殊符号
 #请在下面的引号填写你的token
 api: "CunyxAPI"
+#请在下面填写寸幼萱API的请求域名，可用于改善请求速度
+domain: "api.cunyx.cn"
