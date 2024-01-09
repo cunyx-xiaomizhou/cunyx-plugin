@@ -19,7 +19,8 @@ export class cunyx_api extends plugin {
       rule:[
         {reg:"^#?(.*)?(寸幼萱|(c|C)(u|U)?(n|N)?(y|Y)(x|X))(t|T|a|A)(.*)?$",
           fnc:"api",},
-        {reg:"^#?寸幼萱查看当前绑定",fnc:"ck"}
+        {reg:"^#?寸幼萱查看当前绑定",fnc:"ck"},
+        {reg:"^#?token核验",fnc:"isTrue"}
       ]
     });
   }
@@ -63,6 +64,29 @@ export class cunyx_api extends plugin {
   }
   async ck (e) {
     e.reply('当前绑定QQ为：'+data.qq);
+  }
+  async isTrue (e) {
+    try {
+        json = await fetch(`http://${data.domain}/mine/token?qq=${data.qq}&token=${data.api}`);
+    } catch (err) {
+        json = await fetch(`http://api.cunyx.cn/mine/token?qq=${data.qq}&token=${data.api}`);
+    }
+    try {
+      json = await json.json();
+      var Json = json;
+      Json = Json
+    } catch (err) {
+        e.reply(json);
+    }
+    if (text.cond==200) {
+        if (text.data.cond) {
+            e.reply('测试成功');
+        } else {
+            e.reply(`测试失败！\n请求的QQ：${data.qq}\n请求的token：${data.token}`);
+        }
+    } else {
+        e.reply(`请求失败，原因如下：${text.msg}`,true);
+    }
   }
 }
 function rather_time(phpTimestamp) {
