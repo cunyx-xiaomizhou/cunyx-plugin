@@ -8,6 +8,7 @@
 ---
 #### 介绍
 云崽机器人的寸幼萱插件(cunyx-plugin)
+
 本插件在 @时先思 的友情帮助下完成维护，可以正常使用
 
 <div>
@@ -33,6 +34,9 @@ cd Miao-Yunzai
 ```
 
 2.  拉取项目
+如果你使用的是`TRSS-Yunzai`，请点击[此处蓝字](http://gitee.com/cunyx/cunyx-plugin/tree/trss)使用trss版
+
+（不包括使用`TRSS脚本`安装的喵崽，真寻等可以使用`icqq`登录的机器人）
 ```bash
 # 使用Gitee拉取
 git clone  --depth=1 https://gitee.com/cunyx/cunyx-plugin.git ./plugins/cunyx-plugin/
