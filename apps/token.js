@@ -79,7 +79,7 @@ export class cunyx_api extends plugin {
         e.reply(json);
     }
     if (Json.cond==200) {
-        if (Json.data.cond) {
+        if (Json.data.cond==1) {
             e.reply('测试成功');
         } else {
             e.reply(`测试失败！\n请求的QQ：${data.qq}\n请求的token：${data.token}`,true);
