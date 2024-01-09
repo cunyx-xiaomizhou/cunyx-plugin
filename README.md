@@ -27,19 +27,22 @@
 
 #### 安装教程
 
-1.  进入喵崽根目录
+1.  进入Trss云崽根目录
 ```bash
-cd Miao-Yunzai
+cd TRSS-Yunzai
 ```
 
 2.  拉取项目
+
+如果你使用的不是`TRSS-Yunzai`，请不要使用以下命令
+请点击[此处蓝字](http://gitee.com/cunyx/cunyx-plugin)进入普通分支
 ```bash
 # 使用Gitee拉取
-git clone  --depth=1 https://gitee.com/cunyx/cunyx-plugin.git ./plugins/cunyx-plugin/
+git clone  --depth=1 https://gitee.com/cunyx/cunyx-plugin/tree/trss.git ./plugins/cunyx-plugin/
 ```
 ```bash
 # 使用Github拉取
-git clone  --depth=1 https://github.com/cunyx-xiaomizhou/cunyx-plugin.git ./plugins/cunyx-plugin/
+git clone  --depth=1 https://github.com/cunyx-xiaomizhou/cunyx-plugin/tree/trss.git ./plugins/cunyx-plugin/
 ```
 
 3.  重启机器人，生效控制面板
