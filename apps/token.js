@@ -78,15 +78,14 @@ export class cunyx_api extends plugin {
     } catch (err) {
         e.reply(json);
     }
-    if (Json.cond==200) {
+    if (Json.code==200) {
         if (Json.data.cond==1) {
             e.reply('测试成功');
         } else {
             e.reply(`测试失败！\n请求的QQ：${data.qq}\n请求的token：${data.token}`,true);
         }
     } else {
-        e.reply(`请求失败，原因如下：${Json.msg}\n\n原始数据：`,true);
-        e.reply(json,true);
+        e.reply(`请求失败，原因如下：${Json.msg}\n\n原始数据：${json}`,true);
     }
   }
 }
