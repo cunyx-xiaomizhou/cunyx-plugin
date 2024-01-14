@@ -62,12 +62,13 @@ async function write (e,keys,value) {
     } else if (keys=='temp') {
         Json.temp[e.user_id][Day]=value;
     }
-    const filePath = process.cwd() + '/plugins/cunyx-plugin/data/bushu.json';
+    const path = process.cwd() + '/plugins/cunyx-plugin/data/';
+    let filePath = path + 'bushu.json';
     const content = sent(Json);
     e.reply(content);
     try {
-        if (!fs.existsSync(filePath)) {
-          fs.mkdirSync(filePath, { recursive: true });
+        if (!fs.existsSync(path)) {
+          fs.mkdirSync(path, { recursive: true });
         }
         fs.writeFileSync(filePath, content);
         return true;
