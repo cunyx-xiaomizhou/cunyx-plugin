@@ -75,7 +75,7 @@ async function write (e,keys,value) {
         return false;
     }
 }
-async function date(format = 'Y-m-d H:i:s.l', timestamp = null) {
+async function date(format, timestamp = null) {
     const currentDate = timestamp ? new Date(timestamp) : new Date();
     const year = currentDate.getFullYear();
     const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
