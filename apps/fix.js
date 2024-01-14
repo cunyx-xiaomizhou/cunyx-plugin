@@ -1,3 +1,4 @@
+import fs from 'fs';
 import plugin from './../../../lib/plugins/plugin.js';
 export class cunyx_fix extends plugin {
   constructor () {
