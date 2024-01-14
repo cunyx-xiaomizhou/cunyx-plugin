@@ -52,7 +52,15 @@ async function write (e,keys,value) {
         let Day = date('Y/m/d');
         Json.temp[Day][e.user_id]=value;
     }
-    return fs.writeFileSync(process.cwd()+'/plugins/cunyx-plugin/data/bushu.json',sent(Json));
+    const filePath = process.cwd() + '/plugins/cunyx-plugin/data/bushu.json';
+    const content = sent(Json);
+    try {
+        fs.writeFileSync(filePath, content);
+        return true;
+    } catch (error) {
+        e.reply(error);
+        return false;
+    }
 }
 async function date(format = 'Y-m-d H:i:s.l', timestamp = null) {
     const currentDate = timestamp ? new Date(timestamp) : new Date();
