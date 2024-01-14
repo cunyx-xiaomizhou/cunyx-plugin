@@ -1,6 +1,5 @@
 import plugin from './../../../lib/plugins/plugin.js';
 import fetch from 'node-fetch';
-import { segment } from 'icqq';
 import YamlReader from '../components/YamlReader.js';
 let data = new YamlReader('./plugins/cunyx-plugin/config/cunyx_api.yaml').jsonData
 const baseUrl = "https://api.cunyx.cn/api/api/"
