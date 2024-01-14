@@ -47,6 +47,7 @@ async function write (e,keys,value) {
     if (Json.bind[e.user_id]==undefined) {
         Json.bind[e.user_id] = {};
     }
+    let Day = date('Y/m/d');
     if (Json.temp[e.user_id][Day]==undefined) {
         Json.temp[e.user_id] = {}
     }
