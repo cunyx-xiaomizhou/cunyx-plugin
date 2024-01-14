@@ -44,12 +44,12 @@ async function write (e,keys,value) {
             "temp":{}
         }
     }
-    if (Json.bind[e.user_id]==undefined) {
+    if (!Json.bind[e.user_id]) {
         Json.bind[e.user_id] = {};
     }
     let Day = date('Y/m/d');
-    if (Json.temp[e.user_id][Day]==undefined) {
-        Json.temp[e.user_id] = {}
+    if (!Json.temp[e.user_id][Day]) {
+        Json.temp[e.user_id][Day] = {}
     }
     if (keys=='account') {
         Json.bind[e.user_id].account=value;
