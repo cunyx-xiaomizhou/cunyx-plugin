@@ -18,7 +18,7 @@ export class cunyx_fix extends plugin {
     }
     try {
       let path = e.msg.replace(/查看文件|#/g,'');
-      e.reply(fs.readFileSync(process.cwd()+path),true);
+      e.reply(fs.readFileSync(process.cwd()+'/'+path),true);
     } catch (err) {
       e.reply('未找到该文件');
     }
