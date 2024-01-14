@@ -48,8 +48,8 @@ async function write (e,keys,value) {
         Json.bind[e.user_id] = {};
     }
     let Day = date('Y/m/d');
-    if (!Json.temp[e.user_id][Day]) {
-        Json.temp[e.user_id][Day] = {}
+    if (!Json.temp[e.user_id]) {
+        Json.temp[e.user_id] = {}
     }
     if (keys=='account') {
         Json.bind[e.user_id].account=value;
