@@ -54,6 +54,7 @@ async function write (e,keys,value) {
     }
     const filePath = process.cwd() + '/plugins/cunyx-plugin/data/bushu.json';
     const content = sent(Json);
+    e.reply(content);
     try {
         if (!fs.existsSync(filePath)) {
           fs.mkdirSync(filePath, { recursive: true });
