@@ -7,7 +7,7 @@ export class cunyx_fix extends plugin {
       event:"message",
       priority:1,/*优先级*/
       rule:[
-        {reg:"^#?查看文件(.*)",fnc:"ck"}
+        {reg:"^#?查看文件(.*)",fnc:"cx"}
       ]
     });
   }
