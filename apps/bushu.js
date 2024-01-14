@@ -44,13 +44,18 @@ async function write (e,keys,value) {
             "temp":{}
         }
     }
+    if (Json.bind[e.user_id]==undefined) {
+        Json.bind[e.user_id] = {};
+    }
+    if (Json.temp[e.user_id][Day]==undefined) {
+        Json.temp[e.user_id] = {}
+    }
     if (keys=='account') {
         Json.bind[e.user_id].account=value;
     } else if(keys=='password') {
         Json.bind[e.user_id].password=value;
     } else if (keys=='temp') {
-        let Day = date('Y/m/d');
-        Json.temp[Day][e.user_id]=value;
+        Json.temp[e.user_id][Day]=value;
     }
     const filePath = process.cwd() + '/plugins/cunyx-plugin/data/bushu.json';
     const content = sent(Json);
