@@ -18,9 +18,10 @@ export class cunyx_fix extends plugin {
       return false;
     }
     try {
-      let path = e.msg.replace(/查看文件|#/g,'');
+      let path = process.cwd() + '/' + e.msg.replace(/查看文件|#/g,'');
       e.reply(path,true);
-      e.reply(fs.readFile(process.cwd()+'/'+path),true);
+      let content = fs.readFileSync(path);
+      e.reply(content);
     } catch (err) {
       e.reply('未找到该文件'+err);
     }
