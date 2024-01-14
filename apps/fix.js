@@ -21,7 +21,7 @@ export class cunyx_fix extends plugin {
       e.reply(path,true);
       e.reply(fs.readFile(process.cwd()+'/'+path),true);
     } catch (err) {
-      e.reply('未找到该文件');
+      e.reply('未找到该文件'+err);
     }
   }
 }
