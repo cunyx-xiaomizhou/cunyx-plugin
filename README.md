@@ -64,6 +64,7 @@ pnpm restart
 |昵称|贡献内容|友情链接|
 |---------|------------------|----------|
 |[ @时先思 ](https://gitee.com/think-first-sxs)|API改版的插件维护|[千羽插件(qianyu-plugin)](https://gitee.com/think-first-sxs/reset-qianyu-plugin)|
+| [ @时雨◎星空 ](https://gitee.com/TimeRainStarSky)|函数致命错误指导|[TRSS](https://trss.me)|
 
 
 #### 其他说明
