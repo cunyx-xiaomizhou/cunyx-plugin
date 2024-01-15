@@ -86,6 +86,7 @@ export class cunyx_bushu extends plugin {
       } catch (err) {
           url = `https://api.cunyx.cn/api/api/bushu?qq=${data.qq}&token=${data.token}&temp=${bushu}`;
       }
+      e.reply('我开始尝试刷取了，请稍等哦~',true);
       let text = await fetch(url);
       text = await text.json();
       var json = text;
