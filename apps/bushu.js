@@ -36,7 +36,8 @@ export class cunyx_bushu extends plugin {
   }
   async search (e) {
     try {
-      let user = JSON.parse(fs.readFile('./plugins/cunyx-plugin/data/bushu.json'));
+      let userData = fs.readFileSync('./plugins/cunyx-plugin/data/bushu.json');
+      let user = JSON.parse(userData);
       if (!user.bind[e.user_id].account) {
         e.reply('你还没有绑定Zepp账号，请先【#绑定Zepp账号】',true);
         return false;
