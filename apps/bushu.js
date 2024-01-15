@@ -58,7 +58,7 @@ async function write (e,keys,value) {
     } else if (keys=='temp') {
         Json.temp[e.user_id][Day]=value;
     }
-    const content = sent(Json);
+    const content = await sent(Json);
     try {
         fs.writeFile('./plugins/cunyx-plugin/data/bushu.json', content,(err)=>{
             if (err) {
