@@ -2,7 +2,7 @@ import fs from 'fs';
 import YAML from 'yaml';
 import fetch from 'node-fetch';
 import plugin from './../../../lib/plugins/plugin.js';
-let Object;
+let UO;
 export class cunyx_bushu extends plugin {
   constructor () {
     super({
@@ -41,13 +41,13 @@ export class cunyx_bushu extends plugin {
         e.reply('你还没有绑定Zepp账号，请先【#绑定Zepp账号】',true);
         return false;
       } else {
-        Object.account = user.bind[e.user_id].account;
+        UO.account = user.bind[e.user_id].account;
       }
       if (!user.bind[e.user_id].password) {
         e.reply('你还没有设置Zepp密码，请先【#设置Zepp密码】',true);
         return false;
       } else {
-        Object.password = user.bind[e.user_id].password;
+        UO.password = user.bind[e.user_id].password;
       }
       e.reply(`QQ号${e.user_id}的Zepp绑定内容：\n绑定账号：${Object.account}\n设置密码：${Object.password}`)
     } catch (err) {
