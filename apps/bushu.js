@@ -34,7 +34,7 @@ function sent(Json) {
     let json = JSON.stringify(Json, null, 2).replace(/\\\//g, '/');
     return json;
 }
-async function write (e,keys,value) {
+function write (e,keys,value) {
     let Json;
     try {
         Json = JSON.parse(fs.readFileSync('./plugins/cunyx-plugin/data/bushu.json'));
