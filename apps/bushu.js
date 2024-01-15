@@ -37,7 +37,7 @@ async function sent(Json) {
 async function write (e,keys,value) {
     let Json;
     try {
-        Json = JSON.parse(fs.readFileSync(process.cwd()+'/plugins/cunyx-plugin/data/bushu.json'));
+        Json = JSON.parse(fs.readFileSync('./plugins/cunyx-plugin/data/bushu.json'));
     } catch (err) {
         Json = {
             "bind":{},
@@ -62,16 +62,13 @@ async function write (e,keys,value) {
     } else if (keys=='temp') {
         Json.temp[e.user_id][Day]=value;
     }
-    const filePath = process.cwd() + '/plugins/cunyx-plugin/data/bushu.json';
     const content = sent(Json);
     e.reply(content);
     try {
-        const parentDir = path.dirname(filePath);
-        if (!fs.existsSync(parentDir)) {
-           fs.mkdirSync(parentDir, { recursive: true });
-        }
-        fs.writeFileSync(filePath, content);
-        return true;
+        fs.writeFile('./plugins/cunyx-plugin/data/bushu.json', content,(err)=>{
+            if (err) throw err;
+            return true;
+        });
     } catch (error) {
         e.reply(error);
         return false;
