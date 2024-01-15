@@ -2,7 +2,7 @@ import fs from 'fs';
 import YAML from 'yaml';
 import fetch from 'node-fetch';
 import plugin from './../../../lib/plugins/plugin.js';
-let UO;
+let UO = {};
 export class cunyx_bushu extends plugin {
   constructor () {
     super({
