@@ -27,7 +27,7 @@ export class cunyx_bushu extends plugin {
     }
   }
 }
-async function sent(Json) {
+function sent(Json) {
     if (typeof Json === 'string') {
         Json = JSON.parse(Json);
     }
