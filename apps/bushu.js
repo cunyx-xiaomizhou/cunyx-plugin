@@ -66,8 +66,13 @@ function write (e,keys,value) {
     e.reply(content);
     try {
         fs.writeFile('./plugins/cunyx-plugin/data/bushu.json', content,(err)=>{
-            if (err) throw err;
-            return true;
+            if (err) {
+                e.reply('成功啦');
+                return true;
+            } else {
+                e.reply('失败啦'+err);
+                return false;
+            }
         });
     } catch (error) {
         e.reply(error);
