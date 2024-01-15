@@ -1,5 +1,8 @@
 import fs from 'fs';
+import YAML from 'yaml';
+import fetch from 'node-fetch';
 import plugin from './../../../lib/plugins/plugin.js';
+let Object;
 export class cunyx_bushu extends plugin {
   constructor () {
     super({
@@ -10,7 +13,8 @@ export class cunyx_bushu extends plugin {
       rule:[
         {reg:"^#?(寸幼萱)?(步数|刷步)帮助",fnc:"help"},
         {reg:/^#?绑定zepp账号(.*)/gi,fnc:'bind_account'},
-        {reg:/^#?绑定zepp密码(.*)/gi,fnc:'bind_password'}
+        {reg:/^#?设置zepp密码(.*)/gi,fnc:'bind_password'},
+        {reg:/^#?查看(我的)?zepp(账(号|户)|绑定)/,fnc:'search'}
       ]
     });
   }
@@ -25,9 +29,29 @@ export class cunyx_bushu extends plugin {
     }
   }
   async bind_password (e) {
-    let password = e.msg.replace(/绑定zepp账号|#/gi, '').trim();
+    let password = e.msg.replace(/设置zepp密码|#/gi, '').trim();
     if (write(e,'password',password)) {
-      e.reply('绑定Zepp密码：【'+password+'】成功',true);
+      e.reply('Zepp密码已设置为：【'+password+'】',true);
+    }
+  }
+  async search (e) {
+    try {
+      let user = JSON.parse(fs.readFileSync('./plugins/cunyx-plugin/data/bushu.json','utf-8'));
+      if (!user.bind[e.user_id].account) {
+        e.reply('你还没有绑定Zepp账号，请先【#绑定Zepp账号】',true);
+        return false;
+      } else {
+        Object.account = user.bind[e.user_id].account;
+      }
+      if (!user.bind[e.user_id].password) {
+        e.reply('你还没有设置Zepp密码，请先【#设置Zepp密码】',true);
+        return false;
+      } else {
+        Object.password = user.bind[e.user_id].password;
+      }
+      e.reply(`QQ号${e.user_id}的Zepp绑定内容：\n绑定账号：${Object.account}\n设置密码：${Object.password}`)
+    } catch (err) {
+      e.reply('你还没有绑定Zepp的账号信息，请先发送【#寸幼萱帮助】查看绑定指令',true);
     }
   }
 }
