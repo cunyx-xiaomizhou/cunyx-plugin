@@ -14,7 +14,8 @@ export class cunyx_bushu extends plugin {
         {reg:"^#?(寸幼萱)?(步数|刷步)帮助",fnc:"help"},
         {reg:/^#?绑定zepp账号(.*)/gi,fnc:'bind_account'},
         {reg:/^#?设置zepp密码(.*)/gi,fnc:'bind_password'},
-        {reg:/^#?查看(我的)?zepp(账(号|户)|绑定)/,fnc:'search'}
+        {reg:/^#?查看(我的)?zepp(账(号|户)|绑定)/gi,fnc:'search'},
+        {reg:/^#?(刷步|(刷取)?步数(刷取)?)(.*)/,fnc:'bushu'}
       ]
     });
   }
@@ -71,23 +72,11 @@ export class cunyx_bushu extends plugin {
       } else {
         UO.password = user.bind[e.user_id].password;
       }
-      //步数刷取
-      /*
-{
-    "code": 200,
-    "msg": "寸幼萱API调用成功",
-    "data": {
-        "account": "15*******67",
-        "temp": 38947
-    },
-    "time": 1705147185
-}
-       */
       let data = YAML.parse(fs.readFileSync('./plugins/cunyx-plugin/config/cunyx_api.yaml','utf-8'));
       let userContent = fs.readFileSync('./plugins/cunyx-plugin/data/bushu.json');
       let user = JSON.parse(userContent);
       let Day = data('Y-m-d');
-      let bushu = e.msg.replace(/(刷步|步数刷取)|#/g, '').trim();
+      let bushu = e.msg.replace(/(刷步|(刷取)?步数(刷取)?)|#/g, '').trim();
       if (user.temp[e.user_id][Day]&&user.temp[e.user_id]>bushu) {
         e.reply(`当日步数已更新为${user.temp[e.user_id][Day]}步，大于${bushu}步。\n当日步数只可多不可少，请重试！`,true);
       }
