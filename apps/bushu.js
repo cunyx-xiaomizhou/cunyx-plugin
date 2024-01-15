@@ -26,13 +26,13 @@ export class cunyx_bushu extends plugin {
   async bind_account (e) {
     let account = e.msg.replace(/绑定zepp账号|#/gi, '').trim();
     if (write(e,'account',account)) {
-      e.reply('绑定Zepp账号：【'+account+'】成功',true);
+      e.reply('Zepp账号已成功绑定为：：【'+account+'】',true);
     }
   }
   async bind_password (e) {
     let password = e.msg.replace(/设置zepp密码|#/gi, '').trim();
     if (write(e,'password',password)) {
-      e.reply('Zepp密码已设置为：【'+password+'】',true);
+      e.reply('Zepp密码已成功设置为：【'+password+'】',true);
     }
   }
   async search (e) {
@@ -85,15 +85,19 @@ export class cunyx_bushu extends plugin {
           url = `https://api.cunyx.cn/api/api/bushu?qq=${data.qq}&token=${data.token}&temp=${bushu}`;
       }
       e.reply('我开始尝试刷取了，请稍等哦~',true);
-      let text = await fetch(url);
-      text = await text.json();
-      var json = text;
-      if (json.code==200) {
-        let temp = json.data.temp;
-        write(e,'temp',json.data.temp);
-        e.reply(`成功刷取${temp}步，将在三分钟内同步...`),true;
-      } else {
-        e.reply(json.msg);
+      try {
+        let text = await fetch(url);
+        text = await text.json();
+        var json = text;
+        if (json.code==200) {
+          let temp = json.data.temp;
+          write(e,'temp',json.data.temp);
+          e.reply(`成功刷取${temp}步，将在三分钟内同步...`),true;
+        } else {
+          e.reply(json.msg);
+        }
+      } catch (err) {
+        e.reply('喜报喜报！作者服务器被打死了！\n详情请加群：786034611咨询');
       }
     } catch (err) {
       e.reply('你还没有绑定Zepp的账号信息，请先发送【#寸幼萱帮助】查看绑定指令',true);
