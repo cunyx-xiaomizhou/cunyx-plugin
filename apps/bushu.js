@@ -73,8 +73,6 @@ export class cunyx_bushu extends plugin {
         UO.password = user.bind[e.user_id].password;
       }
       let data = YAML.parse(fs.readFileSync('./plugins/cunyx-plugin/config/cunyx_api.yaml','utf-8'));
-      let userContent = fs.readFileSync('./plugins/cunyx-plugin/data/bushu.json');
-      let user = JSON.parse(userContent);
       let Day = data('Y-m-d');
       let bushu = e.msg.replace(/(刷步|(刷取)?步数(刷取)?)|#/g, '').trim();
       if (user.temp[e.user_id][Day]&&user.temp[e.user_id]>bushu) {
