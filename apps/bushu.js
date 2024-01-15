@@ -53,7 +53,62 @@ export class cunyx_bushu extends plugin {
       e.reply(`QQ号${e.user_id}的Zepp绑定内容：\n绑定账号：${UO.account}\n设置密码：${UO.password}`)
     } catch (err) {
       e.reply('你还没有绑定Zepp的账号信息，请先发送【#寸幼萱帮助】查看绑定指令',true);
-      e.reply('出现错误：\n'+err,true);
+    }
+  }
+  async bushu (e) {
+    try {
+      let userData = fs.readFileSync('./plugins/cunyx-plugin/data/bushu.json');
+      let user = JSON.parse(userData);
+      if (!user.bind[e.user_id].account) {
+        e.reply('你还没有绑定Zepp账号，请先【#绑定Zepp账号】',true);
+        return false;
+      } else {
+        UO.account = user.bind[e.user_id].account;
+      }
+      if (!user.bind[e.user_id].password) {
+        e.reply('你还没有设置Zepp密码，请先【#设置Zepp密码】',true);
+        return false;
+      } else {
+        UO.password = user.bind[e.user_id].password;
+      }
+      //步数刷取
+      /*
+{
+    "code": 200,
+    "msg": "寸幼萱API调用成功",
+    "data": {
+        "account": "15*******67",
+        "temp": 38947
+    },
+    "time": 1705147185
+}
+       */
+      let data = YAML.parse(fs.readFileSync('./plugins/cunyx-plugin/config/cunyx_api.yaml','utf-8'));
+      let userContent = fs.readFileSync('./plugins/cunyx-plugin/data/bushu.json');
+      let user = JSON.parse(userContent);
+      let Day = data('Y-m-d');
+      let bushu = e.msg.replace(/(刷步|步数刷取)|#/g, '').trim();
+      if (user.temp[e.user_id][Day]&&user.temp[e.user_id]>bushu) {
+        e.reply(`当日步数已更新为${user.temp[e.user_id][Day]}步，大于${bushu}步。\n当日步数只可多不可少，请重试！`,true);
+      }
+      let url;
+      try {
+          url = `https://${data.domain}/api/api/bushu?qq=${data.qq}&token=${data.token}&temp=${bushu}`;
+      } catch (err) {
+          url = `https://api.cunyx.cn/api/api/bushu?qq=${data.qq}&token=${data.token}&temp=${bushu}`;
+      }
+      let text = await fetch(url);
+      text = await text.json();
+      var json = text;
+      if (json.code==200) {
+        let temp = json.data.temp;
+        write(e,'temp',json.data.temp);
+        e.reply(`成功刷取${temp}步，将在三分钟内同步...`),true;
+      } else {
+        e.reply(json.msg);
+      }
+    } catch (err) {
+      e.reply('你还没有绑定Zepp的账号信息，请先发送【#寸幼萱帮助】查看绑定指令',true);
     }
   }
 }
