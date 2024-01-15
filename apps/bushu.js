@@ -24,14 +24,14 @@ export class cunyx_bushu extends plugin {
     }
   }
 }
-function sent(Json) {
+async function sent(Json) {
     if (typeof Json === 'string') {
         Json = JSON.parse(Json);
     }
     let json = JSON.stringify(Json, null, 2).replace(/\\\//g, '/');
     return json;
 }
-function write (e,keys,value) {
+async function write (e,keys,value) {
     let Json;
     try {
         Json = JSON.parse(fs.readFileSync('./plugins/cunyx-plugin/data/bushu.json'));
