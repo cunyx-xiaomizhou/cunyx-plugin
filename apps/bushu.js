@@ -97,6 +97,7 @@ export class cunyx_bushu extends plugin {
       }
     } catch (err) {
       e.reply('你还没有绑定Zepp的账号信息，请先发送【#寸幼萱帮助】查看绑定指令',true);
+      e.reply('错误：\n'+err,true);
     }
   }
 }
