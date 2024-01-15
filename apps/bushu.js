@@ -9,7 +9,8 @@ export class cunyx_bushu extends plugin {
       priority:1,/*优先级*/
       rule:[
         {reg:"^#?(寸幼萱)?(步数|刷步)帮助",fnc:"help"},
-        {reg:/^#?绑定zepp账号(.*)/gi,fnc:'bind_account'}
+        {reg:/^#?绑定zepp账号(.*)/gi,fnc:'bind_account'},
+        {reg:/^#?绑定zepp密码(.*)/gi,fnc:'bind_password'}
       ]
     });
   }
@@ -21,6 +22,12 @@ export class cunyx_bushu extends plugin {
     let account = e.msg.replace(/绑定zepp账号|#/gi, '').trim();
     if (write(e,'account',account)) {
       e.reply('绑定Zepp账号：【'+account+'】成功',true);
+    }
+  }
+  async bind_password (e) {
+    let password = e.msg.replace(/绑定zepp账号|#/gi, '').trim();
+    if (write(e,'password',password)) {
+      e.reply('绑定Zepp密码：【'+password+'】成功',true);
     }
   }
 }
