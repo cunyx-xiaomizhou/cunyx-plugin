@@ -21,9 +21,7 @@ export class cunyx_bushu extends plugin {
     let account = e.msg.replace(/绑定zepp账号|#/gi, '').trim();
     e.reply(account,true);
     if (write(e,'account',account)) {
-      e.reply('成功');
-    } else {
-      e.reply('失败');
+      e.reply('绑定Zepp账号：【'+account+'】成功');
     }
   }
 }
@@ -67,15 +65,14 @@ function write (e,keys,value) {
     try {
         fs.writeFile('./plugins/cunyx-plugin/data/bushu.json', content,(err)=>{
             if (err) {
-                e.reply('成功啦');
-                return true;
-            } else {
-                e.reply('失败啦'+err);
+                e.reply('绑定失败：\n'+err);
                 return false;
+            } else {
+                return true;
             }
         });
     } catch (error) {
-        e.reply(error);
+        e.reply('出现错误：\n'+error);
         return false;
     }
 }
