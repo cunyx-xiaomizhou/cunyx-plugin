@@ -19,9 +19,8 @@ export class cunyx_bushu extends plugin {
   }
   async bind_account (e) {
     let account = e.msg.replace(/绑定zepp账号|#/gi, '').trim();
-    e.reply(account,true);
     if (write(e,'account',account)) {
-      e.reply('绑定Zepp账号：【'+account+'】成功');
+      e.reply('绑定Zepp账号：【'+account+'】成功',true);
     }
   }
 }
@@ -46,7 +45,6 @@ function write (e,keys,value) {
         Json.bind[e.user_id] = {};
     }
     let Day = date('Y-m-d');
-    e.reply(Day);
     if (!Json.temp[e.user_id]) {
         Json.temp[e.user_id] = {}
     }
@@ -61,7 +59,6 @@ function write (e,keys,value) {
         Json.temp[e.user_id][Day]=value;
     }
     const content = sent(Json);
-    e.reply(content);
     try {
         fs.writeFile('./plugins/cunyx-plugin/data/bushu.json', content,(err)=>{
             if (err) {
