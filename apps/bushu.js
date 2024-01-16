@@ -79,10 +79,10 @@ export class cunyx_bushu extends plugin {
         e.reply(`当日步数已更新为${user.temp[e.user_id][Day]}步，大于${bushu}步。\n当日步数只可多不可少，请重试！`,true);
       }
       let url;
-      try {
-          url = `https://${data.domain}/api/api/bushu?qq=${data.qq}&token=${data.token}&temp=${bushu}`;
-      } catch (err) {
-          url = `https://api.cunyx.cn/api/api/bushu?qq=${data.qq}&token=${data.token}&temp=${bushu}`;
+      if (data.domain!==undefined) {
+          url = `https://${data.domain}/api/api/bushu?qq=${data.qq}&token=${data.api}&temp=${bushu}&account=${UO.account}&password=${UO.password}`;
+      } else {
+          url = `https://api.cunyx.cn/api/api/bushu?qq=${data.qq}&token=${data.api}&temp=${bushu}&account=${UO.account}&password=${UO.password}`;
       }
       e.reply('我开始尝试刷取了，请稍等哦~',true);
       try {
@@ -101,7 +101,6 @@ export class cunyx_bushu extends plugin {
       }
     } catch (err) {
       e.reply('你还没有绑定Zepp的账号信息，请先发送【#寸幼萱帮助】查看绑定指令',true);
-      e.reply('错误：\n'+err,true);
     }
   }
 }
