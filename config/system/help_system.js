@@ -77,6 +77,31 @@ export const helpList = [
     ]
   },
   {
+    group: '刷步功能',
+    list: [
+      {
+        icon: 15,
+        title: '#步数帮助',
+        desc: '查看刷步帮助文档'
+      },
+      {
+        icon: 16,
+        title: '#绑定zepp账号[账号]',
+        desc: '绑定一个zepp账号用来刷步'
+      },
+      {
+        icon: 17,
+        title: '#设置zepp密码[密码]',
+        desc: '设置对应账号的正确密码'
+      },
+      {
+        icon: 18,
+        title: '#刷步[步数]',
+        desc: '开始刷取步数'
+      }
+    ]
+  },
+  {
     group: '加强版功能(一般人我都不告诉TA)',
     auth: 'master',
     list: [
