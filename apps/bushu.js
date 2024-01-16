@@ -96,8 +96,12 @@ export class cunyx_bushu extends plugin {
         var json = text;
         if (json.code==200) {
           let temp = json.data.temp;
-          write(e,'temp',json.data.temp);
-          e.reply(`成功刷取${temp}步，将在三分钟内同步...`),true;
+          write(e,'temp',temp);
+          if (json.data.notice==null) {
+            e.reply(`成功刷取${temp}步，将立马同步...`),true;
+          } else {
+            e.reply(`官方通告：${json.data.notice}\n\n成功刷取${temp}步，将立马同步...`,true);
+          }
         } else {
           e.reply(json.msg);
         }
