@@ -77,6 +77,7 @@ export class cunyx_bushu extends plugin {
       let bushu = e.msg.replace(/(刷步|(刷取)?步数(刷取)?)|#/g, '').trim();
       if (user.temp[e.user_id][Day]&&user.temp[e.user_id]>bushu) {
         e.reply(`当日步数已更新为${user.temp[e.user_id][Day]}步，大于${bushu}步。\n当日步数只可多不可少，请重试！`,true);
+        return false;
       }
       let url;
       if (data.domain!==undefined) {
