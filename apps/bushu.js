@@ -20,7 +20,7 @@ export class cunyx_bushu extends plugin {
     });
   }
   async help (e) {
-    e.reply('点击链接查看刷步教程：\nhttps://mp.weixin.qq.com/s/我文章没写呢，着急有屁用？',true);
+    e.reply('点击链接查看刷步教程：\nhttps://mp.weixin.qq.com/s?__biz=Mzg4ODY3MjYyNg==&mid=2247484185&idx=1&sn=c3b7e760dd6d3a62b5d92ba7c7e7868f&chksm=cff6db04f8815212b90c95a254be5fc4181a6b9520b36c3de816b7d33fa2516323a963829016#rd',true);
     return true;
   }
   async bind_account (e) {
