@@ -26,7 +26,7 @@ export class cunyx_bushu extends plugin {
   async bind_account (e) {
     let account = e.msg.replace(/绑定zepp账号|#/gi, '').trim();
     if (write(e,'account',account)) {
-      e.reply('Zepp账号已成功绑定为：：【'+account+'】',true);
+      e.reply('Zepp账号已成功绑定为：【'+account+'】',true);
     }
   }
   async bind_password (e) {
