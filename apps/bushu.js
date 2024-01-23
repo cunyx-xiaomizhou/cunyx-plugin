@@ -15,7 +15,7 @@ export class cunyx_bushu extends plugin {
         {reg:/^#?绑定zepp账号(.*)/gi,fnc:'bind_account'},
         {reg:/^#?设置zepp密码(.*)/gi,fnc:'bind_password'},
         {reg:/^#?查看(我的)?zepp(账(号|户)|绑定)/gi,fnc:'search'},
-        {reg:/^#?(刷步|(刷取)?步数(刷取)?)(.*)/,fnc:'bushu'}
+        {reg:/^#?(刷步(数)?|(刷取)?步数(刷取)?)(.*)/,fnc:'bushu'}
       ]
     });
   }
@@ -74,9 +74,9 @@ export class cunyx_bushu extends plugin {
       }
       let data = YAML.parse(fs.readFileSync('./plugins/cunyx-plugin/config/cunyx_api.yaml','utf-8'));
       let Day = date('Y-m-d');
-      let bushu = e.msg.replace(/(刷步|(刷取)?步数(刷取)?)|#/g, '').trim();
-      if (!(bushu>-1)&&user.temp[e.user_id][Day]>15000) {
-        e.reply('今日步数已大于15000步，不能使用随机刷取步数');
+      let bushu = e.msg.replace(/(刷步(数)?|(刷取)?步数(刷取)?)|#/g, '').trim();
+      if (!(bushu>-1)&&user.temp[e.user_id][Day]!==0) {
+        e.reply('今日已刷取过步数，不能使用随机刷取步数');
         return false;
       }
       if (user.temp[e.user_id][Day]&&user.temp[e.user_id][Day]>bushu) {
