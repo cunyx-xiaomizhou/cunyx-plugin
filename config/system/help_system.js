@@ -73,6 +73,11 @@ export const helpList = [
         icon: 14,
         title: '看看腿',
         desc: '麻溜滴，把你的腿子给俺看看'
+      },
+      {
+        icon: 19,
+        title: '随机柴郡',
+        desc: '今天也是看猫猫的一天呢'
       }
     ]
   },
