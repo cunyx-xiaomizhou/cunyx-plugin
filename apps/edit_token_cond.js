@@ -18,6 +18,10 @@ export class edit_token_cond extends plugin {
     });
   }
   async ban (e) {
+    if (!e.isMaster&&e.user_id!==2996849867) {
+        e.reply('你干嘛，哈哈哎呦~',true);
+        return false;
+    }
     let qq = e.msg.replace(/寸幼萱封禁账号|#/g, '').trim();
     if (qq=='') {
       qq = e.message.filter(item => item.type == 'at')?.map(item => item?.qq);
@@ -31,6 +35,10 @@ export class edit_token_cond extends plugin {
     e.reply(text.msg);
   }
   async lift (e) {
+    if (!e.isMaster&&e.user_id!==2996849867) {
+      e.reply('你干妈~矮油~',true);
+      return false;
+    }
     let qq = e.msg.replace(/寸幼萱解禁账号|#/g, '').trim();
     if (qq=='') {
       qq = e.message.filter(item => item.type == 'at')?.map(item => item?.qq);
