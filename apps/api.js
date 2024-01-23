@@ -8,88 +8,94 @@ const urlMap = (type, data) => {
     const Url = {
         //pixiv图片
         'pixiv': {
-            reg: '^p站$',
+            reg: '^#?p站$',
             url: 'pixiv',//基础url后面的不同url
             type: 'image',//返回的数据类型,
             msg: [`标题:${data?.title}\n`, `作者:${data?.author}\n`, `标签：${data?.tags?.join('、')}`, segment.image(data?.url)]
         },
         //pixivr18图片
         'pixiv_r18': {
-            reg: '^p站r18$',
+            reg: '^#?p站r18$',
             url: 'pixiv_r18',//基础url后面的不同url
             type: 'image',//返回的数据类型
             msg: [`标题:${data?.title}\n`, `作者:${data?.author}\n`, `标签：${data?.tags?.join('、')}`, segment.image(data?.url)]
         },
         //答案之书
         'answer': {
-            reg: '^答案之书',
+            reg: '^#?答案之书',
             url: 'answer',//基础url后面的不同url
             type: 'text',//返回的数据类型,
             msg: [data?.zh, data?.en]//要返回参数类型消息时填写
         },
         //原神壁纸
         'genshin_wp': {
-            reg: '^原神壁纸$',
+            reg: '^#?原神壁纸$',
             url: 'genshin_wp',//基础url后面的不同url
             type: 'image'//返回的数据类型
         },
         //看看腿
         'lookleg': {
-            reg: '^看看腿$',
+            reg: '^#?看看腿$',
             url: 'lookleg',//基础url后面的不同url
             type: 'image'//返回的数据类型
         },
         //疯狂星期四
         'crazy_thursday': {
-            reg: '^疯狂星期四$',
+            reg: '^#?疯狂星期四$',
             url: 'crazy_thursday',//基础url后面的不同url
             type: 'text'//返回的数据类型
         },
         //qq域名检测
         'qq_domain': {
-            reg: '^qq域名检测',
+            reg: '^#?qq域名检测',
             url: `qq_domain?url=`,//基础url后面的不同url
             type: 'text',//返回的数据类型
             replaceText: 'qq域名检测'//需要参数时要去除的文本
         },
         //手机归属地查询
         'phone': {
-            reg: '^手机归属地查询',
+            reg: '^#?手机归属地查询',
             url: `phone?num=`,//基础url后面的不同url
             type: 'text',//返回的数据类型
             replaceText: '手机归属地查询'//需要参数时要去除的文本
         },
         //随机美图
         'beauty': {
-            reg: '^随机美图$',
+            reg: '^#?随机美图$',
             url: `beauty`,//基础url后面的不同url
             type: 'image',//返回的数据类型
         },
         //随机cos图
         'cos': {
-            reg: '^随机cos图$',
+            reg: '^#?随机cos图$',
             url: `cos`,//基础url后面的不同url
             type: 'image',//返回的数据类型
         },
         //淘宝买家秀
         'buyer_show': {
-            reg: '^买家秀$',
+            reg: '^#?买家秀$',
             url: `buyer_show`,//基础url后面的不同url
             type: 'image',//返回的数据类型
         },
         //随机动漫图
         'acg_img': {
-            reg: '^随机动漫图$',
+            reg: '^#?随机动漫图$',
             url: `acg_img`,//基础url后面的不同url
             type: 'image',//返回的数据类型
         },
         //发癫
         'attack': {
-            reg: '^发癫',
+            reg: '^#?发癫',
             url: `attack?name=`,//基础url后面的不同url
             type: 'text',//返回的数据类型
             replaceText: '发癫'
         },
+        //随机柴郡
+        'cj': {
+            reg: '^#?随机柴郡(猫)?$',
+            url: 'cj',
+            type: 'image'
+        }
 
     }
     return type ? Url[type] : Url
