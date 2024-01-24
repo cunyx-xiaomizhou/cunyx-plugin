@@ -78,6 +78,16 @@ export const helpList = [
         icon: 19,
         title: '随机柴郡',
         desc: '今天也是看猫猫的一天呢'
+      },
+      {
+        icon: 20,
+        title: '随机丁真',
+        desc: '一眼丁真，鉴定为....'
+      },
+      {
+        icon: 21,
+        title: '随机涩图',
+        desc: '我哪知道，妈妈告诉我这个功能不能用'
       }
     ]
   },
