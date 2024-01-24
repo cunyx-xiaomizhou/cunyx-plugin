@@ -95,8 +95,19 @@ const urlMap = (type, data) => {
             reg: '^#?随机柴郡(猫)?$',
             url: 'cj',
             type: 'image'
+        },
+        //随机丁真
+        'dz': {
+          reg: '^#?随机丁真$',
+          url: 'dz',
+          type: 'image'
+        },
+        //随机涩图
+        'setu': {
+          reg: '^#?随机(涩|色)图$',
+          url: 'setu',
+          type: 'image'
         }
-
     }
     return type ? Url[type] : Url
 }
