@@ -21,7 +21,7 @@ export class Update extends plugin {
       name:"寸幼萱插件更新",
       dsc:"检查和更新寸幼萱插件",
       event:"message",
-      priority:-9999999,/*优先级*/
+      priority:2,/*优先级*/
       rule:[
         {reg:"^#?((寸|村)(幼萱)?|(c|C)(u|U)?(n|N)?(y|Y)(x|X))(.*)?检查(.*)?",fnc:"seek",},
         {reg:"^#?((寸|村)(幼萱)?|(c|C)(u|U)?(n|N)?(y|Y)(x|X))(.*)?更新(.*)?",fnc:"update",}
