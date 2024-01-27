@@ -30,7 +30,8 @@ export class cunyx_fix extends plugin {
   }
   async ck (e) {
     if (!e.isMaster) {
-      e.reply([segment.at(e.user_id),'6'],true)
+      e.reply([segment.at(e.user_id),'6死了'],true);
+      return false;
     }
     let path = process.cwd() + '/config/config/bot.yaml';
     let Yaml = YAML.parse(fs.readFileSync(path,'utf8'));
