@@ -24,7 +24,7 @@ export class Update extends plugin {
       priority:2,/*优先级*/
       rule:[
         {reg:/^(寸|村|c|cun)((幼|优|y)(萱|选|x))检查(更新)?$/gi,fnc:"seek",},
-        {reg:/^(寸|村|c|cun)((幼|优|y)(萱|选|x)(强制)?更新(插件)?$/,fnc:"update"}
+        {reg:/^(寸|村|c|cun)((幼|优|y)(萱|选|x)(强制)?更新(插件)?$/gi,fnc:"update"}
       ]
     });
   }
