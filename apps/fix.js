@@ -29,6 +29,9 @@ export class cunyx_fix extends plugin {
     }
   }
   async ck (e) {
+    if (!e.isMaster) {
+      e.reply([segment.at(e.user_id),'6'],true)
+    }
     let path = process.cwd() + '/config/config/bot.yaml';
     let Yaml = YAML.parse(fs.readFileSync(path,'utf8'));
     e.reply('当前签名服务器地址：\n'+Yaml.sign_api_addr);
