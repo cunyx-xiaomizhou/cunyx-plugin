@@ -75,7 +75,7 @@ export class cunyx_bushu extends plugin {
       let data = YAML.parse(fs.readFileSync('./plugins/cunyx-plugin/config/cunyx_api.yaml','utf-8'));
       let Day = date('Y-m-d');
       let bushu = e.msg.replace(/(刷步(数)?|(刷取)?步数(刷取)?)|#/g, '').trim();
-      if (!bushu>-1&&user.temp[e.user_id][Day]!==0) {
+      if (!(bushu>-1)&&(user.temp[e.user_id][Day]==0||user.temp[e.user_id][Day]==undefined)) {
         e.reply('今日已刷取过步数，不能使用随机刷取步数'+user.temp[e.user_id][Day]);
         return false;
       }
