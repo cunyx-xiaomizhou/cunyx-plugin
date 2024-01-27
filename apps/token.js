@@ -17,9 +17,8 @@ export class cunyx_api extends plugin {
       event:"message",/*抄的，不知道啥玩意*/
       priority:-999999999,/*优先级*/
       rule:[
-        {reg:"^#?(.*)?((C|c)(U|u)?(N|n)?(Y|y)((O|o)|(U|u))?(X|x)((U|u)(A|a)(N|n))?|寸幼萱)(A|a)(P|p)(I|i)(.*)?$",
-          fnc:"api",},
-        {reg: /^#?(CUNY(OU)?X(UAN)?|(寸|村)(幼|优)萱)(插件)?(API)$/gi,fnc:"ck"},
+        {reg:/^#?(CUNY(OU)?X(UAN)?|(寸|村)(幼|优)萱)api$/,fnc:"api"},
+        {reg: /^#?(CUNY(OU)?X(UAN)?|(寸|村)(幼|优)萱)(当前)绑定$/gi,fnc:"ck"},
         {reg:"^#?token核验",fnc:"isTrue"}
       ]
     });
