@@ -17,7 +17,7 @@ export class xiaofei_help extends plugin {
       rule: [
         {
           /** 命令正则匹配 */
-          reg: '^#?((C|c)(U|u)(N|n)(Y|y)((O|o)|(U|u))?(X|x)((U|u)(A|a)(N|n))?|寸幼萱)(插件)?帮助$',
+          reg: /^#?(CUNY(OU)?X(UAN)?|(寸|村)(幼|优)萱)(插件)?帮助$/gi,
           /** 执行方法 */
           fnc: 'message'
         }
