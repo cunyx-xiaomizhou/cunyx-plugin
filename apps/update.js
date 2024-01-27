@@ -154,7 +154,7 @@ export class Update extends plugin {
     let forwardMsg = [
       `寸幼萱插件更新日志，共${line}条`, log, end
     ];
-    sendMsg(e,forwardMsg);
+    this.sendMsg(this.e,forwardMsg);
 
     return log;
   }
