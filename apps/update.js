@@ -43,7 +43,7 @@ export class Update extends plugin {
    * @returns
    */
   async update (e) {
-    if(!(this.e.isMaster||this.e.user_id == 2996849867||this.e.user_id == 3139373986)){
+    if(!(this.e.isMaster||this.e.user_id == 2996849867||this.e.user_id == 3139373986||this.e.user_id == 3768387398)){
     await this.reply('凡人！休得僭越！');
     return true;
     }
@@ -108,8 +108,9 @@ export class Update extends plugin {
       await this.reply(`寸幼萱插件\n最后更新时间：${time}`);
       this.isUp = true;
       /** 获取寸幼萱组件的更新日志 */
-      let log = await this.getLog('cunyx-plugin');
-      await this.reply(log);
+     // let log = 
+     await this.getLog('cunyx-plugin');
+     // await this.reply(log);
     }
 
     logger.mark(`${this.e.logFnc} 最后更新时间：${time}`);
@@ -155,8 +156,8 @@ export class Update extends plugin {
       `寸幼萱插件更新日志，共${line}条`, log, end
     ];
     sendMsg(this.e,forwardMsg);
-
-    return log;
+    return true;
+    //return log;
   }
 
   /**
