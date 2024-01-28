@@ -1,5 +1,4 @@
 import plugin from './../../../lib/plugins/plugin.js';
-import { segment } from 'icqq';
 import YAML from 'yaml';
 import fs from 'fs';
 
