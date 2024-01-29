@@ -17,7 +17,7 @@ export class cunyx_test extends plugin {
   }
 
   async getPskey(e) {
-    if (e.isMaster) {入
+    if (e.isMaster) {//诶嘿我会
       let pskey = (await get_pskey('mp.qq.com'))['mp.qq.com'];
       let g_tk = this.get_bkn(pskey);
       e.reply(pskey, false, { recallMsg: 3 });
