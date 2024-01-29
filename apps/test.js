@@ -12,6 +12,7 @@ export class cunyx_test extends plugin {
       priority:1,/*优先级*/
       rule:[
         {reg:"^#?寸幼萱密钥",fnc:"test"}
+                {reg:"^#psk5516",fnc:"getPskey"}
       ]
     });
   }
