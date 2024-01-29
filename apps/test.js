@@ -1,6 +1,6 @@
 import plugin from './../../../lib/plugins/plugin.js';
 import crypto from 'crypto';
-import common from '../../lib/common/common.js';
+import common from '../../../lib/common/common.js';
 import _ from 'lodash';
 export class cunyx_test extends plugin {
   constructor() {
