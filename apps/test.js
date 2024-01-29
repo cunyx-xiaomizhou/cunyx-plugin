@@ -31,7 +31,7 @@ export class cunyx_test extends plugin {
      * 我哪会写啊
      */
   }
-}
+
 function get_bkn(skey) {
   let bkn = 5381;
   skey = Buffer.from(skey);
