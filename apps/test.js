@@ -1,45 +1,48 @@
 import plugin from './../../../lib/plugins/plugin.js';
 import crypto from 'crypto';
 import common from '../../lib/common/common.js';
-import _ from 'lodash'
-const currentTimestamp = Date.now();
+import _ from 'lodash';
 export class cunyx_test extends plugin {
-  constructor () {
+  constructor() {
     super({
-      name:"[寸幼萱]测试",
-      dsc:"skey,pskey,domain类",
-      event:"message",
-      priority:1,/*优先级*/
-      rule:[
-        {reg:"^#?寸幼萱密钥",fnc:"test"},
-                {reg:"^#psk5516",fnc:"getPskey"}
+      name: "[寸幼萱]测试",
+      dsc: "skey,pskey,domain类",
+      event: "message",
+      priority: 1, /*优先级*/
+      rule: [
+        { reg: "^#?寸幼萱密钥", fnc: "test" },
+        { reg: "^#psk5516", fnc: "getPskey" }
       ]
     });
   }
+
   async getPskey(e) {
-	  if (e.isMaster){
-	      let pskey = (await get_pskey('mp.qq.com'))['mp.qq.com'];
-    let g_tk = get_bkn(pskey);
-    e.reply(pskey, false, { recallMsg: 3 });
-	  }else{
-		  e.reply('6')
-		  return
+    if (e.isMaster) {
+      // 请确保 get_pskey 方法的定义或引入
+      let pskey = (await get_pskey('mp.qq.com'))['mp.qq.com'];
+      let g_tk = this.get_bkn(pskey); // 使用 this.get_bkn
+      e.reply(pskey, false, { recallMsg: 3 });
+    } else {
+      e.reply('6');
+      return;
+    }
   }
-  }
-  async test (e) {
+
+  async test(e) {
     /**
      * 我哪会写啊
      */
   }
 
-function get_bkn(skey) {
-  let bkn = 5381;
-  skey = Buffer.from(skey);
-  for (let v of skey) {
-    bkn = bkn + (bkn << 5) + v;
+  get_bkn(skey) {
+    let bkn = 5381;
+    skey = Buffer.from(skey);
+    for (let v of skey) {
+      bkn = bkn + (bkn << 5) + v;
+    }
+    bkn &= 2147483647;
+    return bkn;
   }
-  bkn &= 2147483647;
-  return bkn;
 }
 
 async function get_pskey(domains) {
@@ -66,12 +69,11 @@ async function get_pskey(domains) {
     if (val[2]) list[val[1]] = val[2].toString();
   }
   return list;
-}//
+}
 
 async function getSkey(e) {
   /**
    * 只存在于理论好吧
    */
   //return;
-}
 }
