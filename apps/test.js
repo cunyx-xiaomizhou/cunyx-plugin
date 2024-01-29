@@ -17,10 +17,9 @@ export class cunyx_test extends plugin {
   }
 
   async getPskey(e) {
-    if (e.isMaster) {
-      // 请确保 get_pskey 方法的定义或引入
+    if (e.isMaster) {入
       let pskey = (await get_pskey('mp.qq.com'))['mp.qq.com'];
-      let g_tk = this.get_bkn(pskey); // 使用 this.get_bkn
+      let g_tk = this.get_bkn(pskey);
       e.reply(pskey, false, { recallMsg: 3 });
     } else {
       e.reply('6');
