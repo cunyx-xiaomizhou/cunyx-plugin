@@ -2,7 +2,9 @@ import YAML from 'yaml';
 import fs from 'fs';
 import fetch from 'node-fetch';
 import plugin from './../../../lib/plugins/plugin.js';
+import { getTargetUid } from './../../miao-plugin/apps/profile/ProfileCommon.js';
 let data = YAML.parse(fs.readFileSync('./plugins/cunyx-plugin/config/cunyx_api.yaml','utf-8'));
+let qq;
 export class cunyx_msg extends plugin {
   constructor () {
     super({
@@ -16,17 +18,32 @@ export class cunyx_msg extends plugin {
     });
   }
   async gs (e) {
-    let qq = e.msg.replace(/(原神)?信息|#/g, '').trim();
-    if (qq=='') {
+    let uid = e.msg.replace(/(原神)?信息|#/g, '').trim();
+    if (uid == '') {
       qq = e.message.filter(item => item.type == 'at')?.map(item => item?.qq);
       if (qq=='') {
-        qq=e.user_id;
+        qq = e.user_id;
       }
+      e.user_id = qq;
+      uid = await getTargetUid(e);
     }
     try {
-      //
+      let url;
+      try {
+        url = `https://${data.domain}/api/api/profile?ys&qq=${data.qq}&token=${data.api}&uid=${uid}`
+      } catch (err) {
+        url = `https://api.cunyx.cn/api/api/profile?ys&qq=${data.qq}&token=${data.api}&uid=${uid}`
+      }
+      let json = await fetch(url);
+      json = await json.json();
+      var Json = json;
+      if (Json.code==200) {
+        e.reply('成功')
+      } else {
+        e.reply(Json.msg);
+      }
     } catch (err) {
-        //
+        e.reply('喜报喜报！作者服务器被打死了！\n详情请加群：786034611咨询');
     }
   }
 }
