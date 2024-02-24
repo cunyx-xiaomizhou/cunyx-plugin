@@ -1,6 +1,7 @@
 import plugin from './../../../lib/plugins/plugin.js';
 import fetch from 'node-fetch';
 import yaml from 'yaml';
+import fs from 'fs';
 import YamlReader from '../components/YamlReader.js';
 let data = new YamlReader('./plugins/cunyx-plugin/config/cunyx_api.yaml').jsonData
 let bk = yaml.parse(fs.readFileSync('./plugins/cunyx-plugin/config/BlackQQ.yaml', 'utf8'))
