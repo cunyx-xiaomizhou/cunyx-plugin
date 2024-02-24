@@ -2,6 +2,7 @@ import plugin from './../../../lib/plugins/plugin.js';
 import fetch from 'node-fetch';
 import YamlReader from '../components/YamlReader.js';
 let data = new YamlReader('./plugins/cunyx-plugin/config/cunyx_api.yaml').jsonData
+let bk = yaml.parse(fs.readFileSync('./plugins/cunyx-plugin/config/BlackQQ.yaml', 'utf8'))
 const baseUrl = "https://api.cunyx.cn/api/api/"
 
 const urlMap = (type, data) => {
@@ -128,6 +129,11 @@ export class Api extends plugin {
         });
     }
     async api(e) {
+if ((bk.blackGroup && bk.blackGroup.includes(e.group_id)) || (bk.blackQQ && bk.blackQQ.includes(e.user_id))) {
+    return false;
+}
+
+
         if (!data.api || !data.qq) {
             return e.reply(`还没有填写${data.api ? 'qq' : 'token'},请先填写${data.api ? 'qq' : 'token'}`);
         }
