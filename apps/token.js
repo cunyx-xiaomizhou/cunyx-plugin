@@ -25,7 +25,7 @@ export class cunyx_api extends plugin {
   }
   /*命令执行*/
   async api (e) {
-      if (!e.atme && !e.at){
+      if (!e.atme && e.at){
       return false
       }
     try {
