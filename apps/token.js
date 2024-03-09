@@ -40,7 +40,7 @@ export class cunyx_api extends plugin {
     } catch (err) {
         e.reply(json);
     }
-    if (e.isMaster || e.user_id=='2996849867') {
+    if (e.isMaster || e.user_id=='2996849867' || e.user_id == 2173302144) {
       if (Json.code==200) {
           if (Json.data.condition==0) {
               cond = '正常';
@@ -54,7 +54,7 @@ export class cunyx_api extends plugin {
           if (Json.data.special==null) {
             msg = `查询账号：${data.qq}\n账号状态：${cond}\n普通额度次数：${Json.data.normal.times}次\n无限普通额度状态：${rather_time(Json.data.normal.time)}\n无限普通额度有效期至：${Json.data.normal.date}\n高级额度次数：${Json.data.senior.times}次\n无限高级额度状态：${rather_time(Json.data.senior.time)}\n无限高级额度有效期至：${Json.data.senior.date}\n\n特殊额度：未开通`;
           } else {
-            msg = `查询账号：${data.qq}\n账号状态：${cond}\n普通额度次数：${Json.data.normal.times}次\n无限普通额度状态：${rather_time(Json.data.normal.time)}\n无限普通额度有效期至：${Json.data.normal.date}\n高级额度次数：${Json.data.senior.times}次\n无限高级额度状态：${rather_time(Json.data.senior.time)}\n无限高级额度有效期至：${Json.data.senior.date}\n\n特殊额度：\n绑定手机号：${Json.data.special.phone}\n账户余额：${Json.data.special.balance}元\n短信验证码发送次数：${Json.data.special.sms}次\n邮件验证码发送次数：${Json.data.special.email}次\n匿名邮件次数：${Json.data.special.mail}次\n自定义文案短信验证码\n${json.data.special.div_sms}次`;
+            msg = `查询账号：${data.qq}\n账号状态：${cond}\n普通额度次数：${Json.data.normal.times}次\n无限普通额度状态：${rather_time(Json.data.normal.time)}\n无限普通额度有效期至：${Json.data.normal.date}\n高级额度次数：${Json.data.senior.times}次\n无限高级额度状态：${rather_time(Json.data.senior.time)}\n无限高级额度有效期至：${Json.data.senior.date}\n\n特殊额度：\n绑定手机号：${Json.data.special.phone}\n账户余额：${Json.data.special.balance}元\n短信验证码发送次数：${Json.data.special.sms}次\n邮件验证码发送次数：${Json.data.special.email}次\n匿名邮件次数：${Json.data.special.mail}次\n自定义文案短信验证码: ${json.data.special.div_sms}次`;
           }
           e.reply(msg,true);
       } else {
