@@ -17,7 +17,7 @@ export class cunyx_api extends plugin {
       event:"message",/*抄的，不知道啥玩意*/
       priority:-999999999,/*优先级*/
       rule:[
-        {reg:/^#?(CUNY(OU)?X(UAN)?|(寸|村)(幼|优)萱)api$/,fnc:"api"},
+        {reg:/^#?(CUNY(OU)?X(UAN)?|(寸|村)(幼|优)萱)api$/i,fnc:"api"},
         {reg: /^#?(CUNY(OU)?X(UAN)?|(寸|村)(幼|优)萱)(当前)绑定$/gi,fnc:"ck"},
         {reg:"^#?token核验",fnc:"isTrue"}
       ]
@@ -25,6 +25,9 @@ export class cunyx_api extends plugin {
   }
   /*命令执行*/
   async api (e) {
+      if (!e.atme && !e.at){
+      return false
+      }
     try {
         json = await fetch(`http://${data.domain}/mine/token?qq=${data.qq}&token=${data.api}`);
     } catch (err) {
