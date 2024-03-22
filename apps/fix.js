@@ -28,7 +28,7 @@ export class cunyx_fix extends plugin {
             other.masterQQ.forEach(item => {
                 if (memberlist.includes(item)) {
                     isinGroup = true
-                    msg.push(this.segment.at(item))
+                    msg.push(segment.at(item))
                 }
             })
             if (!isinGroup) {
