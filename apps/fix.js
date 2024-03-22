@@ -1,6 +1,7 @@
 import fs from 'fs';
 import YAML from 'yaml';
 import plugin from './../../../lib/plugins/plugin.js';
+let isTrss = fs.existsSync(process.cwd() + '/config/ICQQ.yaml')
 export class cunyx_fix extends plugin {
   constructor () {
     super({
@@ -34,9 +35,15 @@ export class cunyx_fix extends plugin {
       e.reply([segment.at(e.user_id),'6死了'],true);
       return false;
     }
+    if (!isTrss) {
     let path = process.cwd() + '/config/config/bot.yaml';
     let Yaml = YAML.parse(fs.readFileSync(path,'utf8'));
     e.reply('当前签名服务器地址：\n'+Yaml.sign_api_addr);
+    }else{
+            let pathtrss = process.cwd() + '/config/ICQQ.yaml';
+    let Yaml = YAML.parse(fs.readFileSync(pathtrss,'utf8'));
+    e.reply('当前签名服务器地址：\n'+Yaml.sign_api_addr);
+    }
   }
   async at (e) {
     let qq = e.msg.replace(/帮我(at|@|艾特)|#/gi, '').trim();
