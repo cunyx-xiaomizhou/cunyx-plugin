@@ -13,7 +13,7 @@ export class cunyx_fix extends plugin {
         {reg:"^#?查看文件(.*)",fnc:"cx"},
         {reg:"^#?查看签名",fnc:"ck"},
         {reg:/^#?帮我(at|艾特|@)(.*)/gi,fnc:"at"},
-        {reg: '你(的|)主人是(谁|哪个)',fnc: 'whoismaster'},
+       // {reg: '你(的|)主人是(谁|哪个)',fnc: 'whoismaster'},
       ]
     });
   }
