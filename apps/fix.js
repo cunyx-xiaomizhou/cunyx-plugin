@@ -42,7 +42,7 @@ export class cunyx_fix extends plugin {
     }else{
             let pathtrss = process.cwd() + '/config/ICQQ.yaml';
     let Yaml = YAML.parse(fs.readFileSync(pathtrss,'utf8'));
-    e.reply('当前签名服务器地址：\n'+Yaml.sign_api_addr);
+    e.reply('当前签名服务器地址：\n'+Yaml.bot.sign_api_addr);
     }
   }
   async at (e) {
