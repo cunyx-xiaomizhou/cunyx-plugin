@@ -20,7 +20,7 @@ export class cunyx_fix extends plugin {
       async whoismaster(e) {
         if (!e.atme && !e.atBot) return false
         let map = await e.group.getMemberMap()
-        let other = YAML.parseDocument(fs.readFileSync(`${process.cwd()}/config/config/other.yaml`)).toJson()
+        let other = YAML.parse(fs.readFileSync(`${process.cwd()}/config/config/other.yaml`)).toJson()
         let memberlist = [...map].map(item => item[0])
         let msg = ['我的主人是']
         if (Array.isArray(other.masterQQ)) {
