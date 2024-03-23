@@ -134,7 +134,8 @@ export class Api extends plugin {
 if ((bk.blackGroup && bk.blackGroup.includes(e.group_id)) || (bk.blackQQ && bk.blackQQ.includes(e.user_id))) {
     return false;
 }
-
+    if (e.adapter_name == 'QQBot')
+    return false 
 
         if (!data.api || !data.qq) {
             return e.reply(`还没有填写${data.api ? 'qq' : 'token'},请先填写${data.api ? 'qq' : 'token'}`);
