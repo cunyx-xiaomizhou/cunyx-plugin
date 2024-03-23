@@ -72,7 +72,7 @@ export class cunyx_fix extends plugin {
   async at (e) {
     let qq = e.at? e.at : e.msg.replace(/帮我(at|@|艾特)|#/gi, '').trim();
     try {
-      e.reply([segment.at(qq),segment.at(qq)+'喂！出来！有人找你！'],true);
+      e.reply([segment.at(qq),segment.at(qq),'喂！出来！有人找你！'],true);
     } catch (err) {
       e.reply('at失败，原因：\n'+err,true);
     }
