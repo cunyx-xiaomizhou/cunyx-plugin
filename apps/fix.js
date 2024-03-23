@@ -12,7 +12,7 @@ export class cunyx_fix extends plugin {
       rule:[
         {reg:"^#?查看文件(.*)",fnc:"cx"},
         {reg:"^#?查看签名",fnc:"ck"},
-        {reg:/^#?帮我(at|艾特|@)(.*)/gi,fnc:"at"},
+        {reg:/^#?帮我(at|艾特|@)(\d+)/gi,fnc:"at"},
        // {reg: '你(的|)主人是(谁|哪个)',fnc: 'whoismaster'},
       ]
     });
@@ -70,7 +70,7 @@ export class cunyx_fix extends plugin {
     }
   }
   async at (e) {
-    let qq = e.msg.replace(/帮我(at|@|艾特)|#/gi, '').trim();
+    let qq = e.at? e.at : e.msg.replace(/帮我(at|@|艾特)|#/gi, '').trim();
     try {
       e.reply([segment.at(qq),segment.at(qq)+'喂！出来！有人找你！'],true);
     } catch (err) {
