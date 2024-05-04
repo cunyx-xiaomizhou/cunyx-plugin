@@ -43,7 +43,7 @@ export class Update extends plugin {
    * @returns
    */
   async update (e) {
-    if(!(this.e.isMaster||this.e.user_id == 2996849867||this.e.user_id == 3139373986||this.e.user_id == 3768387398||this.e.user_id == 2173302144)){
+    if(!(this.e.isMaster||this.e.user_id == 2996849867||this.e.user_id==947309924||this.e.user_id == 3139373986||this.e.user_id == 3768387398||this.e.user_id == 2173302144)){
     await this.reply('凡人！休得僭越！');
     return true;
     }

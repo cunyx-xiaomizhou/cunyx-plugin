@@ -18,7 +18,7 @@ export class edit_token_cond extends plugin {
     });
   }
   async ban (e) {
-    if (!e.isMaster&&e.user_id!==2996849867) {
+    if (!(e.user_id==947309924||e.user_id==2173302144||e.user_id==2996849867||e.isMaster)) {
         e.reply('你干嘛，哈哈哎呦~',true);
         return false;
     }

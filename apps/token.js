@@ -40,7 +40,7 @@ export class cunyx_api extends plugin {
     } catch (err) {
         e.reply(json);
     }
-    if (e.isMaster || e.user_id=='2996849867' || e.user_id == 2173302144) {
+    if (e.isMaster || e.user_id=='2996849867' || e.user_id == 2173302144 || e.user_id == 947309924) {
       if (Json.code==200) {
           if (Json.data.condition==0) {
               cond = '正常';
